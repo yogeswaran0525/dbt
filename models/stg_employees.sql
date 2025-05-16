@@ -1,8 +1,5 @@
 {{
-    config(
-        materialized = 'incremental',
-        unique_key = 'EMPLOYEE_ID'
-    )
+    config(materialized ='table')
 }}
 
 select
@@ -18,12 +15,5 @@ select
     MANAGER_ID,
     DEPARTMENT_ID,
     current_timestamp as  LOAD_TIME
-from {{source('hr','src_employees')}}
+from {{ source('hr','src_employees') }}
 
-{% if is_incremental() %}
-
-where LOAD_TIME > (
-    select coalesce(max(LOAD_TIME),'1900-01-01 00:00:00')from {{this}}
-)
-
-{% endif %}

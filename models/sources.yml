@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: hr
+    database: dbt
+    schema: hr
+    description: "hr-related raw data"
+
+    tables:
+      - name: src_employees
+        
+        columns:
+          - name: employee_id
+            tests:
+              - not_null
+              - unique
+
+      - name: departments
