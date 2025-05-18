@@ -8,6 +8,7 @@
 }}
 
 select
+    {{ dbt_utils.generate_surrogate_key(['EMPLOYEE_ID', 'FIRST_NAME']) }} as surrogate_key,
     EMPLOYEE_ID,
     FIRST_NAME,
     LAST_NAME,
