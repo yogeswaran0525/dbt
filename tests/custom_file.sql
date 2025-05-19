@@ -1,1 +1,0 @@
-{{ not_null ('stg_departments','department_ID') }}

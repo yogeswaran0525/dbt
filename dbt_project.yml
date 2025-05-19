@@ -36,4 +36,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  
+  dbt_project:
+    stg:
+      +database: dev
+      +schema: stg
+    dim:
+      +database: dev
+      +schema: dim
